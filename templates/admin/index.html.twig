@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <table border='1'>
+        <thead>
+         <tr>
+            <th>username</th>
+            <th>cin</th>
+            <th>picture</th>
+            <th>action</th>
+         </tr>
+        </thead>
+        <tbody>
+            {% for admin in admins %}
+                <tr>
+                 <td>{{admin.username}}</td>
+                 <td>{{admin.cin}}</td>
+                 <td>{{admin.picture}}</td>
+                 <td>
+                   <a href="{{ path('editAdmin', { 'id': admin.id }) }}">edit</a>
+                   <a href="{{ path('removeadmin', { 'id': admin.id }) }}">remove</a>
+                 </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('newAdmin')}}"> ADD </a>
+
+{% endblock %}

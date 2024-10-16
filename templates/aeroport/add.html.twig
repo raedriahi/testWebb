@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        /* General form container styling */
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+    </style>
+{% endblock %}
+
+{% block title %}Add/Edit Airport{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <h2>{{ form.vars.value.id is not defined ? 'Add New Airport' : 'Edit Airport' }}</h2>
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.nom) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.ville) }}
+            {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.ville) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_widget(form.save, {'attr': {'class': 'btn-submit'}}) }}
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

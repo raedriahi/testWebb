@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StudentController!{% endblock %}
+
+{% block body %}
+
+<a href ="{{path ('new_student')}}">Add user</a>
+{% if students is empty %}
+            <div class="no-authors">No authors found.</div>
+        {% else %}
+            <table border="1">
+              <thead>
+                <tr>
+                 <th>name</th>
+                 <th>class</th>
+                 <th>number</th>
+                 <th>action</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for student in students %}
+               <tr>
+                <td>{{student.name | upper }}</td>
+                <td>{{ student.class}}</td>
+                <td>{{student.number}}</td>
+                <td>
+                <a href ="{{ path('delete', {id : student.id})}}">delete</a>
+                <a href ="{{ path('edit', {id : student.id})}}">edit</a>
+                </td>
+               </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+    {% endif %}
+{% endblock %}
